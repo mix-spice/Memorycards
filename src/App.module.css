@@ -134,7 +134,7 @@ header{
   .cardsContainer {
     grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
     grid-template-rows: auto;
-    gap: 10px;
+    gap: 0px;
     margin-bottom: 50px;
   }
 
@@ -175,11 +175,13 @@ header{
   }
   .cardsContainer {
     grid-template-columns: 1fr; /* Stack in single column for very small screens */
+    gap: 0px;
   }
 
   .images {
     height: 100px;
     width: 100px;
+  
   }
 
   header h1, header h3, header p {
