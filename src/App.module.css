@@ -11,7 +11,7 @@ body {
 .mainContainer {
   min-height: 100vh;
   background-image: url('./images/bg2.JPG'); /* Path to your image */
-  background-size:1750px 1400px;                        /* Cover the entire element */
+  background-size:2000px 1400px;                        /* Cover the entire element */
   background-position: center;
   background-repeat:repeat;                    /* Prevent image repetition */
   width: 100%;                                     /* Set width */
