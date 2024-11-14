@@ -15,6 +15,10 @@ import FENTANYL from "../src/images/fentanyl.png";
 import IBUPROFEN from "../src/images/ibuprofen.png";
 import WEED from "../src/images/Weed.png";
 import NICOTINE from "../src/images/Nicotine.png";
+import GHB from "../src/images/GHB.png"
+import SPICE from "../src/images/Spice.png"
+import PEIOT from "../src/images/peyot.png"
+import XAN from "../src/images/xanax.png"
 
 function App() {
   const [instances, setInstances] = useState([]);
@@ -24,7 +28,7 @@ function App() {
   const [showResult, setShowResult] = useState(false);
   const [isWin, setIsWin] = useState(false);
 
-  const images = [BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL, IBUPROFEN, WEED, NICOTINE];
+  const images = [BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL, IBUPROFEN, WEED, NICOTINE, GHB, SPICE, PEIOT, XAN];
 
   // Function to shuffle an array (Fisher-Yates shuffle algorithm)
   function shuffleArray(array) {
@@ -65,6 +69,10 @@ function App() {
       { id: 10, name: "IBUPROFEN", src: shuffledImages[9] },
       { id: 11, name: "WEED", src: shuffledImages[10] },
       { id: 12, name: "NICOTINE", src: shuffledImages[11] },
+      { id: 13, name: "XANAX", src: shuffledImages[12] },
+      { id: 14, name: "PEIOT", src: shuffledImages[13] },
+      { id: 15, name: "SPICE", src: shuffledImages[14] },
+      { id: 16, name: "GHB", src: shuffledImages[15] },
     ]);
   }, []);
 
@@ -87,7 +95,7 @@ function App() {
     const newScore = userScore + 1;
     setUserScore(newScore);
 
-    if (newScore === 12) {
+    if (newScore === 16) {
       resetGame(true);
     }
   };
@@ -96,7 +104,7 @@ function App() {
     <div className={styles.mainContainer}>
       <header>
         <div>
-          <h1>Score 12 to Win</h1>
+          <h1>Score 16 to Win</h1>
           <h1>Your Score: {userScore}</h1>
           {showRules && <Rules closeRules={() => setShowRules(false)} />}
           {showResult && <Result closeResult={() => setShowResult(false)} isWin={isWin} />}
