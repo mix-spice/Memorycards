@@ -126,6 +126,11 @@ header{
 }
 
 @media (max-width: 768px) {
+  .mainContainer {
+
+    background-size:auto;                        /* Cover the entire element */
+                                 /* Set height (or desired size) */
+  }
   .cardsContainer {
     grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
     grid-template-rows: auto;
@@ -134,8 +139,8 @@ header{
   }
 
   .images {
-    height: 60px;
-    width: 60px;
+    height: 120px;
+    width: 120px;
   }
 
   header h1, header h3, header p {
@@ -163,13 +168,18 @@ header{
 
 /* Additional small screen adjustments */
 @media (max-width: 480px) {
+  .mainContainer {
+
+    background-size:auto;                        /* Cover the entire element */
+                                 /* Set height (or desired size) */
+  }
   .cardsContainer {
     grid-template-columns: 1fr; /* Stack in single column for very small screens */
   }
 
   .images {
-    height: 40px;
-    width: 40px;
+    height: 100px;
+    width: 100px;
   }
 
   header h1, header h3, header p {
