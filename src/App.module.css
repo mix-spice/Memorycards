@@ -28,7 +28,7 @@ body {
   display: grid;
   grid-template-columns: 1f 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap:50px;
+  gap:30px;
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
@@ -97,8 +97,8 @@ body {
 }
 
 .images{
-  height: 225px;
-  width: 225px;
+  height: 175px;
+  width: 175px;
 }
 
 button{
