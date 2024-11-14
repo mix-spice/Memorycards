@@ -1,3 +1,4 @@
+/* Overlay for Rules and Result modals */
 .rulesOverlay {
     position: fixed;
     top: 0;
@@ -9,47 +10,89 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-  }
-  
-  .rulesContainer {
-    background: white;
+}
+
+/* Container for modal content */
+.rulesContainer {
+    background: #ffffff;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     max-width: 500px;
     width: 80%;
-  }
-  
-  .closeButton {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button styling */
+.closeButton {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: black;
-    color: white;
+    background-color: #000000;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .closeButton:hover {
+    transition: background-color 0.3s ease;
+}
+
+.closeButton:hover {
     background-color: goldenrod;
-  }
-  
- .gameText{
-    color: black;
+}
+
+/* Game text styling */
+.gameText {
+    color: #000000;
     font-family: "AzeretMono", monospace;
     text-align: center;
     font-size: 16px;
-  
-  
-    
-  }
+    margin-bottom: 20px;
+}
 
-  .candleImage{
+/* Candle image styling */
+.candleImage {
     width: 400px;
     height: auto;
     position: relative;
     margin-top: 20px;
+}
 
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .rulesContainer {
+        max-width: 90%;
+        padding: 15px;
+    }
+    
+    .closeButton {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 
-  }
+    .gameText {
+        font-size: 14px;
+    }
+
+    .candleImage {
+        width: 250px; /* Adjusted for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .rulesContainer {
+        padding: 10px;
+    }
+
+    .closeButton {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .gameText {
+        font-size: 12px;
+    }
+
+    .candleImage {
+        width: 200px; /* Further adjusted for very small screens */
+    }
+}
