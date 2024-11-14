@@ -1,0 +1,112 @@
+.mainContainer {
+  background-image: url('./images/bg2.JPG'); /* Path to your image */
+  background-size:2300px 1400px;                        /* Cover the entire element */
+ 
+  background-repeat:repeat;                    /* Prevent image repetition */
+  width: 100%;                                     /* Set width */
+  height: 100vh;                                   /* Set height (or desired size) */
+}
+
+
+.mainContainer{
+  display:grid;
+  grid-template-rows: auto auto;
+}
+
+.cardsContainer{
+  display: grid;
+  grid-template-columns: 1f 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap:50px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+
+}
+
+.bierCard{
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+.vodkaCard{
+  grid-row: 1/2;
+  grid-column: 2/3;
+
+}
+
+.mdmaCard{
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+
+.ketamineCard{
+  grid-row: 1/2;
+  grid-column: 4/5;
+}
+
+.cocaineCard{
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.metamphetamineCard{
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+
+.lsdCard{
+  grid-row: 2/3;
+  grid-column: 3/4;
+}
+
+.heroinCard{
+  grid-row: 2/3;
+  grid-column: 4/5;
+}
+
+.fentanylCard{
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
+
+.ibuprofenCard{
+  grid-row: 3/4;
+  grid-column: 2/3;
+}
+
+.weedCard{
+  grid-row: 3/4;
+  grid-column: 3/4;
+}
+
+.nicotineCard{
+  grid-row: 3/4;
+  grid-column: 4/5;
+}
+
+.images{
+  height: 225px;
+  width: 225px;
+}
+
+button{
+  border:none;
+  background: none;
+}
+
+p,h1,h3, h4{
+  color: rgb(169, 255, 231);
+  font-family: "AzeretMono", monospace;
+  text-align: center;
+
+
+  
+}
+
+header{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+}

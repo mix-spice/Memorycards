@@ -1,0 +1,53 @@
+.rulesOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .rulesContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 500px;
+    width: 80%;
+  }
+  
+  .closeButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .closeButton:hover {
+    background-color: goldenrod;
+  }
+  
+ .gameText{
+    color: black;
+    font-family: "AzeretMono", monospace;
+    text-align: center;
+  
+  
+    
+  }
+
+  .candleImage{
+    width: 500px;
+    height: auto;
+    position: relative;
+
+
+  }
