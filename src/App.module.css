@@ -11,7 +11,7 @@ body {
 .mainContainer {
   min-height: 100vh;
   background-image: url('./images/bg2.JPG'); /* Path to your image */
-  background-size:1920px 1080px;                        /* Cover the entire element */
+  background-size:1920px 1200px;                        /* Cover the entire element */
  
   background-repeat:repeat;                    /* Prevent image repetition */
   width: 100%;                                     /* Set width */
@@ -28,7 +28,7 @@ body {
   display: grid;
   grid-template-columns: 1f 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap:30px;
+  gap:20px;
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
@@ -110,7 +110,7 @@ p,h1,h3, h4{
   color: rgb(169, 255, 231);
   font-family: "AzeretMono", monospace;
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
 
 
   
