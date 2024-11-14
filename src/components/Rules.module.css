@@ -70,7 +70,7 @@
     }
 
     .candleImage {
-        width: 150px; /* Adjusted for smaller screens */
+        width: 250px; /* Adjusted for smaller screens */
     }
 }
 
@@ -89,6 +89,6 @@
     }
 
     .candleImage {
-        width: 100px; /* Further adjusted for very small screens */
+        width: 200px; /* Further adjusted for very small screens */
     }
 }

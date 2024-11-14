@@ -134,8 +134,8 @@ header{
   }
 
   .images {
-    height: 120px;
-    width: 120px;
+    height: 60px;
+    width: 60px;
   }
 
   header h1, header h3, header p {
@@ -168,8 +168,8 @@ header{
   }
 
   .images {
-    height: 100px;
-    width: 100px;
+    height: 40px;
+    width: 40px;
   }
 
   header h1, header h3, header p {
