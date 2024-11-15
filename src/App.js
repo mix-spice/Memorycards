@@ -15,10 +15,10 @@ import FENTANYL from "../src/images/fentanyl.png";
 import IBUPROFEN from "../src/images/ibuprofen.png";
 import WEED from "../src/images/Weed.png";
 import NICOTINE from "../src/images/Nicotine.png";
-import GHB from "../src/images/GHB.png"
-import SPICE from "../src/images/Spice.png"
-import PEIOT from "../src/images/peyot.png"
-import XAN from "../src/images/xanax.png"
+import GHB from "../src/images/GHB.png";
+import SPICE from "../src/images/Spice.png";
+import PEIOT from "../src/images/peyot.png";
+import XAN from "../src/images/xanax.png";
 
 function App() {
   const [instances, setInstances] = useState([]);
@@ -27,25 +27,28 @@ function App() {
   const [showRules, setShowRules] = useState(true);
   const [showResult, setShowResult] = useState(false);
   const [isWin, setIsWin] = useState(false);
+  const [showPlayer, setShowPlayer] = useState(false);
 
-  const images = [BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL, IBUPROFEN, WEED, NICOTINE, GHB, SPICE, PEIOT, XAN];
+  const images = [
+    BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL,
+    IBUPROFEN, WEED, NICOTINE, GHB, SPICE, PEIOT, XAN
+  ];
 
-  // Function to shuffle an array (Fisher-Yates shuffle algorithm)
-  function shuffleArray(array) {
+  const shuffleArray = (array) => {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
-  }
+  };
 
   const resetGame = (win = false) => {
     const shuffledImages = shuffleArray(images);
     setInstances((prevInstances) =>
       prevInstances.map((instance, index) => ({
         ...instance,
-        src: shuffledImages[index % shuffledImages.length], // Assign a unique image
+        src: shuffledImages[index % shuffledImages.length],
       }))
     );
     setUserScore(0);
@@ -100,6 +103,10 @@ function App() {
     }
   };
 
+  const handlePlayClick = () => {
+    setShowPlayer(!showPlayer);
+  };
+
   return (
     <div className={styles.mainContainer}>
       <header>
@@ -120,6 +127,23 @@ function App() {
           </div>
         ))}
       </div>
+
+      <button className={styles.playButton} onClick={handlePlayClick}>
+        Play Junkie
+      </button>
+      {showPlayer && (
+        <div className={styles.videoPlayerContainer}>
+          <iframe
+            width="100%"
+      
+            src="https://www.youtube.com/embed/BVFJCRl_P2c?autoplay=1"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
     </div>
   );
 }
