@@ -140,9 +140,7 @@ function App() {
           <h1>Your Score: {userScore}</h1>
           {showRules && <Rules closeRules={() => setShowRules(false)} />}
           {showResult && <Result closeResult={() => setShowResult(false)} isWin={isWin} />}
-          <button className={styles.playButton} onClick={handlePlayClick}>
-            {isPlaying ? "Pause Junkie" : "Play Junkie"}
-          </button>
+     
         </div>
       </header>
 
