@@ -127,20 +127,17 @@ header{
 
 @media (max-width: 768px) {
   .mainContainer {
-
-    background-size:auto;                        /* Cover the entire element */
-                                 /* Set height (or desired size) */
+    background-size: cover;
   }
+
   .cardsContainer {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
-    grid-template-rows: auto;
-    gap: 0px;
+    gap: 10px;
     margin-bottom: 50px;
   }
 
   .images {
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
   }
 
   header h1, header h3, header p {
@@ -162,26 +159,19 @@ header{
   }
 
   .candleImage {
-    width: 250px; /* Smaller for mobile */
+    width: 200px;
   }
 }
 
-/* Additional small screen adjustments */
+/* Small screen adjustments */
 @media (max-width: 480px) {
   .mainContainer {
-
-    background-size:auto;                        /* Cover the entire element */
-                                 /* Set height (or desired size) */
-  }
-  .cardsContainer {
-    grid-template-columns: 1fr; /* Stack in single column for very small screens */
-    gap: 0px;
+    background-size: cover;
   }
 
   .images {
-    height: 70px;
-    width: 70px;
-  
+    height: 80px;
+    width: 80px;
   }
 
   header h1, header h3, header p {
@@ -189,6 +179,6 @@ header{
   }
 
   .candleImage {
-    width: 200px;
+    width: 150px;
   }
 }
