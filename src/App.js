@@ -104,9 +104,21 @@ function App() {
   };
 
   const handlePlayClick = () => {
-    setShowPlayer(!showPlayer);
+    // Toggle visibility if needed, or just set up the audio play functionality directly
+    setShowPlayer(true);
+  
+    // Use YouTube's API to play without showing the player
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none"; // Hide iframe
+    iframe.src = "https://www.youtube.com/embed/BVFJCRl_P2c?autoplay=1&controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&rel=0";
+    iframe.allow = "autoplay";
+    document.body.appendChild(iframe);
+  
+    // Optionally, you can remove the iframe after a short delay if autoplay works
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 5000); // 5 seconds is usually enough for autoplay to start
   };
-
   return (
     <div className={styles.mainContainer}>
       <header>
