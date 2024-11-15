@@ -198,7 +198,7 @@ header{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .playButton:hover {
@@ -238,14 +238,14 @@ header{
     top: 5px;
     left: 5px;
     padding: 6px 12px;
-    font-size: 12px;
+    font-size: 9px;
   }
 
   .videoPlayerContainer {
     top: 40px;
     left: 5px;
-    width: 55%;
-    max-width: 100px;
+    width: 35%;
+    max-width: 50px;
     height: auto;
     padding: 5px;
   }
