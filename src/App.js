@@ -29,15 +29,14 @@ function App() {
   const [isWin, setIsWin] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false); // Track if audio is playing
 
-  // Reference to the audio object
-  const audioRef = useRef(new Audio("/audio/junkie.mp3"));
+  const audioRef = useRef(null); // Ref for the audio object
 
   const images = [
     BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL,
     IBUPROFEN, WEED, NICOTINE, GHB, SPICE, PEIOT, XAN
   ];
 
-  // Shuffle array function
+  // Function to shuffle an array (Fisher-Yates shuffle algorithm)
   function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -52,7 +51,7 @@ function App() {
     setInstances((prevInstances) =>
       prevInstances.map((instance, index) => ({
         ...instance,
-        src: shuffledImages[index % shuffledImages.length],
+        src: shuffledImages[index % shuffledImages.length], // Assign a unique image
       }))
     );
     setUserScore(0);
@@ -82,10 +81,24 @@ function App() {
       { id: 16, name: "GHB", src: shuffledImages[15] },
     ]);
 
-    // Cleanup audio on component unmount
+    // Initialize the audio file
+    audioRef.current = new Audio("/audio/junkie.mp3");
+    
+    // Log a message when the audio is loaded
+    audioRef.current.addEventListener("canplaythrough", () => {
+      console.log("Audio is ready to play");
+    });
+    
+    // Log any errors related to the audio
+    audioRef.current.addEventListener("error", (error) => {
+      console.error("Error loading audio:", error);
+    });
+
     return () => {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
     };
   }, []);
 
@@ -96,7 +109,6 @@ function App() {
     }
 
     setClickedImages((prev) => new Set(prev).add(clickedSrc));
-
     const shuffledImages = shuffleArray(images);
     setInstances((prevInstances) =>
       prevInstances.map((instance, index) => ({
@@ -117,9 +129,12 @@ function App() {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play();
+      // Play the audio and handle any play-related errors
+      audioRef.current.play().catch((error) => {
+        console.error("Playback prevented:", error);
+      });
     }
-    setIsPlaying(!isPlaying); // Toggle play state
+    setIsPlaying(!isPlaying);
   };
 
   return (
