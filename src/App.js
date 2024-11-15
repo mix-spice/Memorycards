@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import styles from "./App.module.css";
 import Rules from "./components/Rules";
 import Result from "./components/Result";
@@ -27,21 +27,25 @@ function App() {
   const [showRules, setShowRules] = useState(true);
   const [showResult, setShowResult] = useState(false);
   const [isWin, setIsWin] = useState(false);
-  const [showPlayer, setShowPlayer] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false); // Track if audio is playing
+
+  // Reference to the audio object
+  const audioRef = useRef(new Audio("/audio/junkie.mp3"));
 
   const images = [
     BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL,
     IBUPROFEN, WEED, NICOTINE, GHB, SPICE, PEIOT, XAN
   ];
 
-  const shuffleArray = (array) => {
+  // Shuffle array function
+  function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
-  };
+  }
 
   const resetGame = (win = false) => {
     const shuffledImages = shuffleArray(images);
@@ -77,6 +81,12 @@ function App() {
       { id: 15, name: "SPICE", src: shuffledImages[14] },
       { id: 16, name: "GHB", src: shuffledImages[15] },
     ]);
+
+    // Cleanup audio on component unmount
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    };
   }, []);
 
   const handleImageClick = (clickedSrc) => {
@@ -104,21 +114,14 @@ function App() {
   };
 
   const handlePlayClick = () => {
-    // Toggle visibility if needed, or just set up the audio play functionality directly
-    setShowPlayer(true);
-  
-    // Use YouTube's API to play without showing the player
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none"; // Hide iframe
-    iframe.src = "https://www.youtube.com/embed/BVFJCRl_P2c?autoplay=1&controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&rel=0";
-    iframe.allow = "autoplay";
-    document.body.appendChild(iframe);
-  
-    // Optionally, you can remove the iframe after a short delay if autoplay works
-    setTimeout(() => {
-      document.body.removeChild(iframe);
-    }, 5000); // 5 seconds is usually enough for autoplay to start
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying); // Toggle play state
   };
+
   return (
     <div className={styles.mainContainer}>
       <header>
@@ -128,21 +131,9 @@ function App() {
           {showRules && <Rules closeRules={() => setShowRules(false)} />}
           {showResult && <Result closeResult={() => setShowResult(false)} isWin={isWin} />}
           <button className={styles.playButton} onClick={handlePlayClick}>
-        Play Junkie
-      </button>
-      {showPlayer && (
-        <div className={styles.videoPlayerContainer}>
-         <iframe
-            title="YouTube Audio Player"
-            src="https://www.youtube.com/embed/BVFJCRl_P2c?autoplay=1&controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&rel=0"
-            frameBorder="0"
-            style={{ display: "none" }} // Hide the video player
-            allow="autoplay"
-          ></iframe>
+            {isPlaying ? "Pause Junkie" : "Play Junkie"}
+          </button>
         </div>
-      )}
-        </div>
-        
       </header>
 
       <div className={styles.cardsContainer}>
@@ -154,8 +145,6 @@ function App() {
           </div>
         ))}
       </div>
-
-     
     </div>
   );
 }
