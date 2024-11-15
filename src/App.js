@@ -27,16 +27,15 @@ function App() {
   const [showRules, setShowRules] = useState(true);
   const [showResult, setShowResult] = useState(false);
   const [isWin, setIsWin] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false); // Track if audio is playing
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const audioRef = useRef(null); // Ref for the audio object
+  const audioRef = useRef(null); // Audio reference for controlling playback
 
   const images = [
     BIER, VODKA, MDMA, KETAMINE, COCAINE, METH, LSD, HEROIN, FENTANYL,
     IBUPROFEN, WEED, NICOTINE, GHB, SPICE, PEIOT, XAN
   ];
 
-  // Function to shuffle an array (Fisher-Yates shuffle algorithm)
   function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -51,7 +50,7 @@ function App() {
     setInstances((prevInstances) =>
       prevInstances.map((instance, index) => ({
         ...instance,
-        src: shuffledImages[index % shuffledImages.length], // Assign a unique image
+        src: shuffledImages[index % shuffledImages.length],
       }))
     );
     setUserScore(0);
@@ -81,15 +80,10 @@ function App() {
       { id: 16, name: "GHB", src: shuffledImages[15] },
     ]);
 
-    // Initialize the audio file
-    audioRef.current = new Audio(process.env.PUBLIC_URL + "/audio/junkie.mp3"); // Make sure this path is correct
-    
+    // Load the audio file and set it to the ref
+    audioRef.current = new Audio(process.env.PUBLIC_URL + "/audio/junkie.mp3");
     audioRef.current.addEventListener("canplaythrough", () => {
       console.log("Audio is ready to play");
-    });
-    
-    audioRef.current.addEventListener("error", (error) => {
-      console.error("Error loading audio:", error);
     });
 
     return () => {
@@ -107,6 +101,7 @@ function App() {
     }
 
     setClickedImages((prev) => new Set(prev).add(clickedSrc));
+
     const shuffledImages = shuffleArray(images);
     setInstances((prevInstances) =>
       prevInstances.map((instance, index) => ({
@@ -124,6 +119,8 @@ function App() {
   };
 
   const handlePlayClick = () => {
+    if (!audioRef.current) return;
+
     if (isPlaying) {
       audioRef.current.pause();
     } else {
