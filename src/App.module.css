@@ -187,66 +187,43 @@ header{
   }
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 50px;
+}
+
 .playButton {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  background-color: #7c8481;
+  margin-top: 20px; /* Add some space between button and other elements */
+  background-color: #2e3d37;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 18px;
+  font-family: "AzeretMono", monospace;
 }
 
 .playButton:hover {
   background-color: #201f1e;
 }
 
-.videoPlayerContainer {
-  position: fixed;
-  top: 60px;
-  left: 20px;
-  z-index: 999;
-  width: 300px;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  padding: 10px;
-}
 @media (max-width: 768px) {
   .playButton {
-    top: 10px;
-    left: 10px;
     padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .videoPlayerContainer {
-    top: 50px;
-    left: 10px;
-    width: 90%; /* Use most of the screen width */
-    max-width: 300px;
-    padding: 8px;
+    font-size: 12px;
+    margin-top: 15px;
   }
 }
 
-/* Styling for devices with width less than 480px */
 @media (max-width: 480px) {
   .playButton {
-    top: 5px;
-    left: 5px;
     padding: 6px 12px;
-    font-size: 9px;
-  }
-
-  .videoPlayerContainer {
-    top: 40px;
-    left: 5px;
-    width: 35%;
-    max-width: 50px;
-    height: auto;
-    padding: 5px;
+    font-size:10px;
+    margin-top: 10px;
   }
 }

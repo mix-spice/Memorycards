@@ -115,7 +115,22 @@ function App() {
           <h1>Your Score: {userScore}</h1>
           {showRules && <Rules closeRules={() => setShowRules(false)} />}
           {showResult && <Result closeResult={() => setShowResult(false)} isWin={isWin} />}
+          <button className={styles.playButton} onClick={handlePlayClick}>
+        Play Junkie
+      </button>
+      {showPlayer && (
+        <div className={styles.videoPlayerContainer}>
+         <iframe
+            title="YouTube Audio Player"
+            src="https://www.youtube.com/embed/BVFJCRl_P2c?autoplay=1&controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&rel=0"
+            frameBorder="0"
+            style={{ display: "none" }} // Hide the video player
+            allow="autoplay"
+          ></iframe>
         </div>
+      )}
+        </div>
+        
       </header>
 
       <div className={styles.cardsContainer}>
@@ -128,22 +143,7 @@ function App() {
         ))}
       </div>
 
-      <button className={styles.playButton} onClick={handlePlayClick}>
-        Play Junkie
-      </button>
-      {showPlayer && (
-        <div className={styles.videoPlayerContainer}>
-          <iframe
-            width="100%"
-      
-            src="https://www.youtube.com/embed/BVFJCRl_P2c?autoplay=1"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-      )}
+     
     </div>
   );
 }
