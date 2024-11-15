@@ -82,14 +82,12 @@ function App() {
     ]);
 
     // Initialize the audio file
-    audioRef.current = new Audio("/audio/junkie.mp3");
+    audioRef.current = new Audio(process.env.PUBLIC_URL + "/audio/junkie.mp3"); // Make sure this path is correct
     
-    // Log a message when the audio is loaded
     audioRef.current.addEventListener("canplaythrough", () => {
       console.log("Audio is ready to play");
     });
     
-    // Log any errors related to the audio
     audioRef.current.addEventListener("error", (error) => {
       console.error("Error loading audio:", error);
     });
@@ -129,9 +127,9 @@ function App() {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      // Play the audio and handle any play-related errors
       audioRef.current.play().catch((error) => {
         console.error("Playback prevented:", error);
+        alert("Playback is blocked by the browser. Please interact with the page to play audio.");
       });
     }
     setIsPlaying(!isPlaying);
